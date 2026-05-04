@@ -318,6 +318,68 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
 .vframe-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.25) 100%);transition:background .3s;pointer-events:none;}
 .vframe-inner:hover .vframe-overlay,.tut-thumb:hover .vframe-overlay{background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.4) 100%);}
 .vframe-inner,.tut-thumb{cursor:pointer;}
+
+/* ACCESS MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,15,15,.65);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease;}
+.modal-backdrop.open{display:flex;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-card{background:#fff;border-radius:18px;max-width:540px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.3);position:relative;animation:slideUp .35s cubic-bezier(.22,1,.36,1);}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.modal-head{padding:32px 36px 0;position:relative;}
+.modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;background:var(--gray-light);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;}
+.modal-close:hover{background:#e0e0e0;transform:rotate(90deg);}
+.modal-close svg{width:18px;height:18px;stroke:var(--dark);fill:none;stroke-width:2.5;stroke-linecap:round;}
+.modal-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+.modal-eyebrow::before{content:'';display:block;width:22px;height:2px;background:var(--red);}
+.modal-title{font-size:26px;font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:10px;letter-spacing:-.01em;}
+.modal-sub{font-size:14px;color:var(--gray);line-height:1.6;margin-bottom:24px;}
+.modal-form{padding:0 36px 32px;}
+.form-row{margin-bottom:16px;}
+.form-row label{display:block;font-size:12px;font-weight:800;color:var(--dark);margin-bottom:7px;letter-spacing:.02em;}
+.form-row label .req{color:var(--red);}
+.form-input,.form-textarea{width:100%;font-family:'Nunito',sans-serif;font-size:15px;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;background:#fafafa;color:var(--dark);transition:border-color .2s,background .2s,box-shadow .2s;}
+.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(204,0,0,.08);}
+.form-input.error,.form-textarea.error{border-color:#e63946;background:#fef0f0;}
+.form-textarea{resize:vertical;min-height:80px;font-family:'Nunito',sans-serif;}
+.form-row-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.form-row-grid .form-row{margin-bottom:0;}
+.form-submit{width:100%;background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;box-shadow:0 6px 22px rgba(204,0,0,.28);}
+.form-submit:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 10px 30px rgba(204,0,0,.4);}
+.form-submit svg{width:16px;height:16px;}
+.form-foot{font-size:11px;color:var(--gray);text-align:center;margin-top:14px;line-height:1.5;}
+.form-foot a{color:var(--red);text-decoration:none;font-weight:700;}
+.form-success{padding:40px 36px;text-align:center;display:none;}
+.form-success.visible{display:block;}
+.form-success-icon{width:72px;height:72px;border-radius:50%;background:#dcf5e2;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.form-success-icon svg{width:36px;height:36px;stroke:#16a34a;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.form-success-title{font-size:22px;font-weight:900;color:var(--dark);margin-bottom:10px;}
+.form-success-text{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:22px;}
+.form-success-btn{background:var(--gray-light);color:var(--dark);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;transition:background .2s;}
+.form-success-btn:hover{background:#e0e0e0;}
+
+/* FLOATING ACCESS BUTTON */
+#float-access{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:14px 22px;border-radius:50px;border:none;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 10px 30px rgba(204,0,0,.4),0 2px 6px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(20px) scale(.85);transition:opacity .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),background .2s;}
+#float-access.visible{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
+#float-access:hover{background:var(--red-dark);transform:translateY(-2px) scale(1.03);}
+#float-access svg{width:16px;height:16px;flex-shrink:0;}
+#float-access .pulse{position:absolute;inset:0;border-radius:50px;background:var(--red);opacity:.6;animation:pulseRing 2s ease-out infinite;pointer-events:none;}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.18);opacity:0}}
+
+/* Reposition back-top to be above floating access */
+#back-top{bottom:90px!important;}
+
+@media(max-width:600px){
+  .modal-card{max-width:100%;border-radius:14px;}
+  .modal-head{padding:26px 22px 0;}
+  .modal-form{padding:0 22px 26px;}
+  .modal-title{font-size:22px;}
+  .form-row-grid{grid-template-columns:1fr;gap:0;}
+  .form-row-grid .form-row{margin-bottom:14px;}
+  #float-access{bottom:18px;right:18px;font-size:13px;padding:12px 18px;}
+  #float-access span.label{display:none;}
+  #float-access{padding:14px;border-radius:50%;width:54px;height:54px;justify-content:center;}
+  #back-top{bottom:84px!important;right:18px;}
+}
 </style>
 </head>
 <body>
@@ -333,7 +395,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <a class="btn-login" href="https://tescoma-web.ntv.es/" target="_blank">Iniciar sesión</a>
-    <a class="btn-nav" href="https://www.tescomaonline.es/pages/contact" target="_blank">Solicitar Acceso</a>
+    <a class="btn-nav" href="javascript:void(0)" onclick="openAccessModal()">Solicitar Acceso</a>
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -343,7 +405,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
   <a href="#tutoriales" onclick="closeMenu()">Tutoriales</a>
   <a href="#acceso" onclick="closeMenu()">Acceso</a>
   <a href="https://tescoma-web.ntv.es/" target="_blank" style="color:var(--dark)!important;font-weight:700!important">Iniciar sesión →</a>
-  <a href="https://www.tescomaonline.es/pages/contact" target="_blank" style="color:var(--red)!important;font-weight:800!important">Solicitar Acceso →</a>
+  <a href="javascript:void(0)" onclick="openAccessModal()" style="color:var(--red)!important;font-weight:800!important">Solicitar Acceso →</a>
 </div>
 
 <!-- HERO -->
@@ -353,7 +415,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
     <h1 class="hero-title reveal d1">Tu nuevo portal<br/>de pedidos,<br/><span class="r">siempre activo.</span></h1>
     <p class="hero-desc reveal d2">Gestiona tus pedidos, accede al catálogo completo y controla tu negocio cuando quieras, desde donde estés. Sin llamadas. Sin esperas.</p>
     <div class="hero-ctas reveal d3">
-      <a class="btn-primary" href="https://www.tescomaonline.es/pages/contact" target="_blank">
+      <a class="btn-primary" href="javascript:void(0)" onclick="openAccessModal()">
         Solicitar acceso
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -391,7 +453,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
     <div class="sec-label">Vídeo de presentación</div>
     <h2 class="vpres-title">Conoce el<br/><span>Portal Profesional</span></h2>
     <p class="vpres-desc">Tu nueva plataforma de pedidos B2B. Accede al catálogo completo, prepara tus pedidos online y gestiona toda tu documentación desde un único portal profesional.</p>
-    <a class="btn-red-arr" href="https://www.tescomaonline.es/pages/contact" target="_blank">
+    <a class="btn-red-arr" href="javascript:void(0)" onclick="openAccessModal()">
       Solicitar acceso
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -509,7 +571,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
         <div class="cta-promo-txt">descuento en tu primera<br/>compra al activar el portal</div>
       </div>
       <div style="height:28px"></div>
-      <a class="btn-cta-big" href="https://www.tescomaonline.es/pages/contact" target="_blank">
+      <a class="btn-cta-big" href="javascript:void(0)" onclick="openAccessModal()">
         Solicitar acceso ahora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -609,6 +671,67 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
   </div>
 </div>
 
+
+<!-- ACCESS MODAL -->
+<div class="modal-backdrop" id="accessModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div id="formView">
+      <div class="modal-head">
+        <button class="modal-close" onclick="closeAccessModal()" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <div class="modal-eyebrow">Solicitar acceso</div>
+        <h3 class="modal-title" id="modalTitle">Solicita acceso al Portal Profesional</h3>
+        <p class="modal-sub">Rellena tus datos y nos pondremos en contacto contigo en menos de 24h con tus credenciales y la oferta de bienvenida.</p>
+      </div>
+      <form class="modal-form" id="accessForm" onsubmit="submitAccessForm(event)">
+        <div class="form-row">
+          <label for="f-name">Nombre completo <span class="req">*</span></label>
+          <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name" placeholder="Ej. Mar&iacute;a Garc&iacute;a"/>
+        </div>
+        <div class="form-row-grid">
+          <div class="form-row">
+            <label for="f-phone">Tel&eacute;fono <span class="req">*</span></label>
+            <input class="form-input" type="tel" id="f-phone" name="phone" required autocomplete="tel" placeholder="+34 600 000 000"/>
+          </div>
+          <div class="form-row">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="email@empresa.com"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="f-shop">Comercio / Empresa <span class="req">*</span></label>
+          <input class="form-input" type="text" id="f-shop" name="shop" required placeholder="Nombre de tu negocio"/>
+        </div>
+        <div class="form-row">
+          <label for="f-msg">Mensaje (opcional)</label>
+          <textarea class="form-textarea" id="f-msg" name="msg" placeholder="Cu&eacute;ntanos algo m&aacute;s sobre tu negocio..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Enviar solicitud
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-foot">Tus datos se enviar&aacute;n por email a <a href="mailto:a.bano@tescoma.es">a.bano@tescoma.es</a>. Al enviar aceptas nuestra <a href="https://www.tescomaonline.es/policies/privacy-policy" target="_blank">pol&iacute;tica de privacidad</a>.</p>
+      </form>
+    </div>
+    <div class="form-success" id="successView">
+      <div class="form-success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="form-success-title">&iexcl;Solicitud enviada!</h3>
+      <p class="form-success-text">Se ha abierto tu cliente de correo con la solicitud lista para enviar. Si no se ha abierto autom&aacute;ticamente, escr&iacute;benos a <a href="mailto:a.bano@tescoma.es" style="color:var(--red);font-weight:700;text-decoration:none">a.bano@tescoma.es</a>.</p>
+      <button class="form-success-btn" onclick="closeAccessModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING ACCESS BUTTON -->
+<button id="float-access" onclick="openAccessModal()" aria-label="Solicitar acceso">
+  <span class="pulse"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="position:relative;z-index:1"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="label" style="position:relative;z-index:1">Solicitar acceso</span>
+</button>
+
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
@@ -698,6 +821,58 @@ function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.cl
 function toggleMenu(){document.getElementById('navMobile').classList.toggle('open');}
 function closeMenu(){document.getElementById('navMobile').classList.remove('open');}
 document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('#navMobile'))m.classList.remove('open');});
+
+// ACCESS MODAL
+function openAccessModal(){
+  document.getElementById('accessModal').classList.add('open');
+  document.getElementById('formView').style.display='block';
+  document.getElementById('successView').classList.remove('visible');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{const el=document.getElementById('f-name');if(el)el.focus();},300);
+}
+function closeAccessModal(){
+  document.getElementById('accessModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('accessModal').addEventListener('click',e=>{
+  if(e.target.id==='accessModal')closeAccessModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('accessModal').classList.contains('open'))closeAccessModal();
+});
+
+function submitAccessForm(e){
+  e.preventDefault();
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const shop=document.getElementById('f-shop').value.trim();
+  const msg=document.getElementById('f-msg').value.trim();
+  
+  if(!name||!phone||!email||!shop){alert('Por favor, rellena todos los campos obligatorios.');return false;}
+  
+  const subject='Solicitud de acceso al Portal Profesional - '+shop;
+  const body=`Hola,\n\nSolicito acceso al Portal Profesional de Tescoma Espa\u00f1a.\n\n--- DATOS DE CONTACTO ---\n\nNombre: ${name}\nTel\u00e9fono: ${phone}\nEmail: ${email}\nComercio / Empresa: ${shop}\n\n${msg?'--- MENSAJE ---\n\n'+msg+'\n\n':''}Gracias.\nUn saludo.`;
+  
+  const mailto='mailto:a.bano@tescoma.es?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  window.location.href=mailto;
+  
+  // Show success view
+  setTimeout(()=>{
+    document.getElementById('formView').style.display='none';
+    document.getElementById('successView').classList.add('visible');
+    document.getElementById('accessForm').reset();
+  },400);
+  return false;
+}
+
+// FLOATING ACCESS BUTTON visibility on scroll
+const floatBtn=document.getElementById('float-access');
+window.addEventListener('scroll',()=>{
+  // Show after scrolling past hero (~400px)
+  floatBtn.classList.toggle('visible',scrollY>500);
+},{passive:true});
+
 // ON LOAD
 window.addEventListener('load',()=>{
   const img=document.getElementById('heroImg');
